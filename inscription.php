@@ -9,6 +9,7 @@
 
 <div class="h-screen md:flex">
 <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url(img/electroimage.png);">
+<div class="absolute bg-black opacity-60 inset-0 z-0"></div>
 
 	</div>
 	<div style="background-color: #161616;" class="flex md:w-1/2 justify-center py-10 items-center ">
