@@ -1,13 +1,11 @@
 <?php 
     require_once 'connection.php';
     $mysqli = new mysqli("localhost", "root", "", "electronacer");
-    $res = $mysqli->query("SELECT * FROM product ORDER BY RAND()");
-    function getAllProducts() {
+    $productResult = $mysqli->query("SELECT * FROM product ORDER BY RAND()");
+   
 
-    }
-
-  $categorie = $conn->query("SELECT * FROM categorie");
-  $categorie_data = $categorie->fetch_all(PDO::FETCH_ASSOC);
+//   $categorie = $conn->query("SELECT * FROM categorie");
+//   $categorie_data = $categorie->fetch_all(PDO::FETCH_ASSOC);
 
   $mysqli = new mysqli("localhost", "root", "", "electronacer");
     $res = $mysqli->query("SELECT * FROM categorie");
@@ -34,6 +32,11 @@
 <?php include 'navbar2.php'; ?>
 
 
+<div style="margin-top: 10px; margin-left:1560px">
+<form method="post">
+          <button type="submit" name="sign_out"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Sign Out</button>
+        </form>
+</div>
 
 <div style="margin-top: 50px; margin-left:50px;">
 <form  method="post">
@@ -45,7 +48,7 @@
             <?php foreach ($res as $row) { ?>
 
 
-            <option value="<?=   $row['id']?>"><?=   $row["nom"]?> </option>
+            <option value="<?=   $row['nom']?>"><?=   $row["nom"]?> </option>
 
 
             <?php   } } ?>
@@ -55,7 +58,7 @@
 </form>
 </div>
 
-<?php include 'filtercat.php'; ?>
+
 
 
 
@@ -71,21 +74,26 @@
     <button type="submit" name="vider" class="ml-2 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-1.5">Vider les filtres</button>
 </form>
 
-<?php include 'filterprice.php'; ?>
-
+<div class="flex"><?php include 'filterprice.php'; ?></div>
+<div class="flex justify-around"><?php include 'filtercat.php'; ?></div>
+<marquee class="bg-gray-200 mt-5 text-white font-bold" behavior="" scrollamount="20" direction="">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around">
+    <img style="width: 200px; height: 100px; " src="img/kisspng-sales-process-business-paper-clearance-sale-png-5b2f17c1635a01.452472481529812929407.png" alt="">
+    <p style="color: black;"></p>
+    </div>
+</marquee>
 <!-- tailwind card -->
 <!-- flex flex-wrap  gap-20 space-y-[100px] mx-20 -->
-<div style="display: flex; flex-wrap:wrap; justify-content:space-around; margin-top: 30px ">
+<div style="display: flex; flex-wrap:wrap; justify-content:space-around; margin-top: 100px ">
     
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around">
     <?php
-        while ($row = $res->fetch_assoc()) {
+        while ($row = $productResult->fetch_assoc()) {
     ?>
         <div class="w-full ml-20 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="margin: 10px;">
-            <a href="#">
                 <img class="p-8 rounded-t-lg" src="<?php echo $row["image"]; ?>" alt="product image" />
-            </a>
+            
             <div class="px-5 pb-5">
                 <a href="#" class="text-gray-900 dark:text-gray-100">
                     <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100"><?php echo $row["description"]; ?></h2>
@@ -100,9 +108,7 @@
                         </span>
                     </div>
                 </div>
-                <div style="margin-left: 60%;">
-                <button type="button" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Add to cart</button>
-                </div>
+                
             </div>
         </div>
     <?php
@@ -110,14 +116,12 @@
     ?>
 </div>
 
-
-
-
-
     </div>
+    <?php include 'footer.php'; ?>
 
 <?php include 'js.php'; ?>
 <body>
+
     
 </body>
 </html>

@@ -36,6 +36,7 @@ $res = $mysqli->query("SELECT * FROM categorie ORDER BY RAND()");
                 <th class="text-left p-3 px-5">Password</th>
                 <th class="text-left p-3 px-5">Role</th>
                 <th class="text-left p-3 px-5">Delet user</th>
+                <th class="text-left p-3 px-5">Change role</th>
                 <th></th>
             </tr>
             <tr>

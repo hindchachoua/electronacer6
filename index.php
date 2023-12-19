@@ -1,8 +1,6 @@
 <?php
                     // required data base with php
                     require_once 'connection.php';
-                    
-                    
 
 
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,6 +9,7 @@
                         $password= $_POST['password'];
                     
                         $sql = "SELECT * FROM admin WHERE email = '$email'";
+                        // function executes an SQL query  on the connected database.
                         $query = mysqli_query($conn, $sql);
                     
                         if (!$query) {

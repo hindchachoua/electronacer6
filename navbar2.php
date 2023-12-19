@@ -46,3 +46,13 @@
   </section>
 </div>
 <!-- navbar end -->
+
+<?php 
+  
+  if (isset($_POST["sign_out"])) {
+    // Perform logout actions here, then redirect to index.php
+    session_destroy();
+    header("Location: index.php");
+    exit(); // Ensure script execution stops after the redirection header
+  }
+?>
